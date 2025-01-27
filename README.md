@@ -23,7 +23,7 @@ Criterion B: Planning and Design
 
 This section covers the brainstorming process, flowcharts, and design choices. It explains the reasoning behind the user interface and experience (UI/UX) design and outlines the application's architecture.
 
-Criterion D: Development
+Criterion C: Development
 This section delves into the technical aspects, with an explanation of the codebase and the rationale behind the implementation of each feature. It includes annotated code snippets to illustrate key functionalities.
 
 Criterion E: Feedback and Evaluation
