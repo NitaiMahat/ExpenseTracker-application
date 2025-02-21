@@ -1,0 +1,53 @@
+# Expense Tracker Web Version
+
+## Overview
+This project is a web-based version of my expense tracker application, which was originally designed for desktop use. The transition aims to make expense tracking more accessible by enabling users to manage their finances directly from a browser.
+
+## Changes Made
+### 1. **User Interface Adaptation**
+- Converted the UI to be fully responsive, ensuring compatibility with different screen sizes.
+- Improved the visual design using CSS for a modern, dark-themed appearance.
+- Added a login system to provide basic authentication.
+
+### 2. **Database Transition**
+- Replaced the local storage method with IndexedDB to allow persistent data storage within the browser.
+- Created separate object stores for tracking expenses and managing a buying list.
+
+### 3. **Expense Management Features**
+- Users can add, search, and delete expenses with a simple form.
+- Integrated data validation to prevent invalid inputs (e.g., non-numeric costs, incorrect date formats).
+- Implemented a total expense calculator.
+
+### 4. **Data Visualization**
+- Integrated Chart.js to display expenses in interactive pie charts and bar graphs.
+- Allowed users to switch between different chart types dynamically.
+
+### 5. **Buying List Feature**
+- Users can maintain a checklist of planned purchases.
+- Items can be marked as completed or deleted when no longer needed.
+
+### 6. **Session Management and User Experience**
+- Basic authentication using a predefined username and password (Admin/Admin) for testing purposes.
+- Smooth transitions between different sections of the app using JavaScript.
+
+## Technologies Used
+- **HTML, CSS, JavaScript** for frontend development.
+- **IndexedDB** for client-side database storage.
+- **Chart.js** for data visualization.
+- **jsPDF & jsPDF-AutoTable** for potential future export functionality.
+
+## Future Improvements
+- Implement user authentication with a backend database.
+- Add export functionality to download expense reports as PDFs.
+- Enable cloud storage to sync expense data across devices.
+- Improve UI/UX with a more intuitive dashboard design.
+
+## How to Use
+1. Clone the repository.
+2. Open `expenseTrackerWeb.html` in a browser.
+3. Log in using the test credentials (`Admin` / `Admin`).
+4. Start adding and managing expenses!
+
+---
+This project is a work in progress, and any feedback or contributions are welcome!
+
