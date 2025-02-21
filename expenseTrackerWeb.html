@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #2d2d2d;
+        color: #ffffff;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    h1 {
+        color: #E9765B;
+        text-align: center;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+        color: #E9765B;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        width: 100%;
+        padding: 8px;
+        border: none;
+        background-color: #2d2d2d;
+        color: white;
+        border-bottom: 2px solid #E9765B;
+    }
+
+    button {
+        background-color: #E9765B;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    button:hover {
+        background-color: #e81753;
+    }
+
+    .button-group {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+
+    .list-container {
+        margin-top: 20px;
+        background-color: #E9765B;
+        padding: 15px;
+        border-radius: 5px;
+    }
+
+    .list-item {
+        padding: 10px;
+        border-bottom: 1px solid #ffffff;
+    }
+
+    .list-item:last-child {
+        border-bottom: none;
+    }
+
+    .chart-container {
+        margin-top: 20px;
+        background-color: #2c2f33;
+        padding: 20px;
+        border-radius: 5px;
+        height: 400px;
+    }
+    
+      
+  
+      .list-item {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 10px;
+          border-bottom: 1px solid #ffffff;
+      }
+  
+      .list-item:last-child {
+          border-bottom: none;
+      }
+  
+      .list-item input[type="checkbox"] {
+          margin-right: 10px;
+      }
+  
+      .list-item span {
+          flex-grow: 1;
+          margin: 0 10px;
+      }
+  
+      .delete-btn {
+          background-color: #ff4444;
+          color: white;
+          border: none;
+          padding: 5px 10px;
+          border-radius: 3px;
+          cursor: pointer;
+          margin-left: 10px;
+      }
+  
+      .delete-btn:hover {
+          background-color: #cc0000;
+      }
+  
+      .completed {
+          text-decoration: line-through;
+          color: #888;
+      }
+      .list-item {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        border-bottom: 1px solid #ffffff;
+    }
+
+    .list-item:last-child {
+        border-bottom: none;
+    }
+
+    .list-item input[type="checkbox"] {
+        margin-right: 10px;
+    }
+
+    .list-item span {
+        flex-grow: 1;
+        margin: 0 10px;
+    }
+
+    .completed {
+        text-decoration: line-through;
+        color: #888;
+    }
+
+    .delete-btn {
+        background-color: #ff4444;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+
+    .delete-btn:hover {
+        background-color: #cc0000;
+    }
+ 
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>EXPENSE TRACKER</h1>
+        
+        <div id="loginForm">
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text" id="username">
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" id="password">
+            </div>
+            <div class="button-group">
+                <button onclick="login()">Login</button>
+                <button onclick="window.close()">Exit</button>
+            </div>
+        </div>
+
+        <div id="mainMenu" style="display: none;">
+            <div class="button-group">
+                <button onclick="showExpenseTracker()">Expense Tracker</button>
+                <button onclick="showVisualization()">Visualize</button>
+                <button onclick="showBuyingList()">Buying List</button>
+                <button onclick="window.close()">Close</button>
+            </div>
+        </div>
+
+        <div id="expenseTracker" style="display: none;">
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" id="itemName">
+            </div>
+            <div class="form-group">
+                <label>Date</label>
+                <input type="text" id="date" placeholder="dd-mm-yyyy">
+            </div>
+            <div class="form-group">
+                <label>Cost ($)</label>
+                <input type="text" id="cost">
+            </div>
+            
+            <div class="button-group">
+                <button onclick="addExpense()">Add</button>
+                <button onclick="searchExpense()">Search</button>
+                <button onclick="clearFields()">Clear</button>
+                <button onclick="calculateTotal()">Total</button>
+                <button onclick="showMainMenu()">Back</button>
+            </div>
+            <div class="list-container" id="expenseList"></div>
+        </div>
+
+        <div id="visualization" style="display: none;">
+            <div class="button-group">
+                <button onclick="showPieChart()">Pie Chart</button>
+                <button onclick="showBarGraph()">Bar Graph</button>
+                <button onclick="showMainMenu()">Back</button>
+            </div>
+            <div class="chart-container" id="chartArea"></div>
+        </div>
+
+        <div id="buyingList" style="display: none;">
+          <div class="form-group">
+              <label>Item</label>
+              <input type="text" id="buyingItem">
+          </div>
+          <div class="button-group">
+              <button onclick="addItem()">Add</button>
+              <button onclick="showMainMenu()">Back</button>
+          </div>
+          <div class="list-container" id="itemList"></div>
+      </div>
+    </div>
+
+    <script>
+        let db;
+
+        // Login functionality
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (username === "Admin" && password === "Admin") {
+                document.getElementById('loginForm').style.display = 'none';
+                document.getElementById('mainMenu').style.display = 'block';
+            } else if (username === "" && password === "") {
+                alert("Try typing Admin for both username and password");
+            } else {
+                alert("Invalid credentials");
+                document.getElementById('username').value = '';
+                document.getElementById('password').value = '';
+            }
+        }
+
+        // Navigation functions
+        function showMainMenu() {
+            document.getElementById('expenseTracker').style.display = 'none';
+            document.getElementById('visualization').style.display = 'none';
+            document.getElementById('buyingList').style.display = 'none';
+            document.getElementById('mainMenu').style.display = 'block';
+        }
+
+        function showExpenseTracker() {
+            document.getElementById('mainMenu').style.display = 'none';
+            document.getElementById('expenseTracker').style.display = 'block';
+            viewAll();
+        }
+
+        function showVisualization() {
+            document.getElementById('mainMenu').style.display = 'none';
+            document.getElementById('visualization').style.display = 'block';
+            showPieChart(); // Show pie chart by default
+        }
+
+        function showBuyingList() {
+          document.getElementById('mainMenu').style.display = 'none';
+          document.getElementById('buyingList').style.display = 'block';
+          loadBuyingList();
+      }
+
+        // Expense functions
+        function addExpense() {
+            const name = document.getElementById('itemName').value.trim();
+            const date = document.getElementById('date').value.trim();
+            const cost = document.getElementById('cost').value.trim();
+
+            if (!name || !date || !cost) {
+                alert("Please fill in all fields");
+                return;
+            }
+
+            if (!/^\d{2}-\d{2}-\d{4}$/.test(date)) {
+                alert("Please use dd-mm-yyyy format for date");
+                return;
+            }
+
+            if (isNaN(cost)) {
+                alert("Cost must be a number");
+                return;
+            }
+
+            const transaction = db.transaction(['expenses'], 'readwrite');
+            const store = transaction.objectStore('expenses');
+            
+            store.add({
+                name: name,
+                date: date,
+                cost: parseFloat(cost)
+            });
+
+            clearFields();
+        }
+
+        function searchExpense() {
+            const name = document.getElementById('itemName').value.trim();
+            const date = document.getElementById('date').value.trim();
+            const cost = document.getElementById('cost').value.trim();
+
+            const expenseList = document.getElementById('expenseList');
+            expenseList.innerHTML = '';
+
+            if (!name && !date && !cost) {
+                alert("Please enter at least one search criteria");
+                return;
+            }
+
+            const transaction = db.transaction(['expenses'], 'readonly');
+            const store = transaction.objectStore('expenses');
+            const request = store.openCursor();
+
+            request.onsuccess = (event) => {
+                const cursor = event.target.result;
+                if (cursor) {
+                    const item = cursor.value;
+                    if ((name === '' || item.name.toLowerCase().includes(name.toLowerCase())) &&
+                        (date === '' || item.date === date) &&
+                        (cost === '' || item.cost === parseFloat(cost))) {
+                        
+                        const expense = document.createElement('div');
+                        expense.className = 'list-item';
+                        
+                        const expenseText = document.createElement('span');
+                        expenseText.textContent = `${item.name} - ${item.date} - $${item.cost}`;
+                        
+                        const deleteBtn = document.createElement('button');
+                        deleteBtn.textContent = 'Delete';
+                        deleteBtn.className = 'delete-btn';
+                        deleteBtn.onclick = () => deleteExpense(item.id);
+                        
+                        expense.appendChild(expenseText);
+                        expense.appendChild(deleteBtn);
+                        expenseList.appendChild(expense);
+                    }
+                    cursor.continue();
+                } else if (expenseList.children.length === 0) {
+                    alert("No matching expenses found");
+                    viewAll();
+                }
+            };
+        }
+
+        function deleteExpense(id) {
+            if (confirm("Are you sure you want to delete this expense?")) {
+                const transaction = db.transaction(['expenses'], 'readwrite');
+                const store = transaction.objectStore('expenses');
+                store.delete(id);
+                viewAll();
+            }
+        }
+
+        function clearFields() {
+            document.getElementById('itemName').value = '';
+            document.getElementById('date').value = '';
+            document.getElementById('cost').value = '';
+            viewAll();
+        }
+        
+
+        function calculateTotal() {
+            const transaction = db.transaction(['expenses'], 'readonly');
+            const store = transaction.objectStore('expenses');
+            const request = store.openCursor();
+            let total = 0;
+
+            request.onsuccess = (event) => {
+                const cursor = event.target.result;
+                if (cursor) {
+                    total += cursor.value.cost;
+                    cursor.continue();
+                } else {
+                    alert(`Total Expenses: $${total.toFixed(2)}`);
+                }
+            };
+        }
+
+        function viewAll() {
+            const expenseList = document.getElementById('expenseList');
+            expenseList.innerHTML = '';
+    
+            const transaction = db.transaction(['expenses'], 'readonly');
+            const store = transaction.objectStore('expenses');
+            const request = store.openCursor();
+    
+            request.onsuccess = (event) => {
+                const cursor = event.target.result;
+                if (cursor) {
+                    const expense = document.createElement('div');
+                    expense.className = 'list-item';
+                    
+                    // Create expense text
+                    const expenseText = document.createElement('span');
+                    expenseText.textContent = `${cursor.value.name} - ${cursor.value.date} - $${cursor.value.cost}`;
+                    
+                    // Create delete button
+                    const deleteBtn = document.createElement('button');
+                    deleteBtn.textContent = 'Delete';
+                    deleteBtn.className = 'delete-btn';
+                    deleteBtn.onclick = () => deleteExpense(cursor.value.id);
+                    
+                    // Add elements to expense item
+                    expense.appendChild(expenseText);
+                    expense.appendChild(deleteBtn);
+                    expenseList.appendChild(expense);
+                    
+                    cursor.continue();
+                }
+            };
+        }
+
+        // Visualization functions
+        function showPieChart() {
+            const transaction = db.transaction(['expenses'], 'readonly');
+            const store = transaction.objectStore('expenses');
+            const request = store.getAll();
+
+            request.onsuccess = (event) => {
+                const expenses = event.target.result;
+                if (expenses.length === 0) {
+                    alert("No expenses to visualize");
+                    return;
+                }
+
+                const chartArea = document.getElementById('chartArea');
+                chartArea.innerHTML = '<canvas></canvas>';
+                const canvas = chartArea.querySelector('canvas');
+
+                // Prepare data for the chart
+                const data = {};
+                expenses.forEach(expense => {
+                    data[expense.name] = (data[expense.name] || 0) + expense.cost;
+                });
+
+                // Draw pie chart
+                new Chart(canvas, {
+                    type: 'pie',
+                    data: {
+                        labels: Object.keys(data),
+                        datasets: [{
+                            data: Object.values(data),
+                            backgroundColor: generateColors(Object.keys(data).length)
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Expense Distribution',
+                                color: '#ffffff'
+                            },
+                            legend: {
+                                labels: {
+                                    color: '#ffffff'
+                                }
+                            }
+                        }
+                    }
+                });
+            };
+        }
+
+        function showBarGraph() {
+            const transaction = db.transaction(['expenses'], 'readonly');
+            const store = transaction.objectStore('expenses');
+            const request = store.getAll();
+
+            request.onsuccess = (event) => {
+                const expenses = event.target.result;
+                if (expenses.length === 0) {
+                    alert("No expenses to visualize");
+                    return;
+                }
+
+                const chartArea = document.getElementById('chartArea');
+                chartArea.innerHTML = '<canvas></canvas>';
+                const canvas = chartArea.querySelector('canvas');
+
+                // Prepare data for the chart
+                const data = {};
+                expenses.forEach(expense => {
+                    data[expense.name] = (data[expense.name] || 0) + expense.cost;
+                });
+
+                // Draw bar graph
+                new Chart(canvas, {
+                    type: 'bar',
+                    data: {
+                        labels: Object.keys(data),
+                        datasets: [{
+                            label: 'Expenses',
+                            data: Object.values(data),
+                            backgroundColor: generateColors(Object.keys(data).length)
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                grid: {
+                                    color: '#666'
+                                },
+                                ticks: {
+                                    color: '#ffffff'
+                                }
+                            },
+                            x: {
+                                grid: {
+                                    color: '#666'
+                                },
+                                ticks: {
+                                    color: '#ffffff'
+                                }
+                            }
+                        },
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Expense Distribution',
+                                color: '#ffffff'
+                            },
+                            legend: {
+                                labels: {
+                                    color: '#ffffff'
+                                }
+                            }
+                        }
+                    }
+                });
+            };
+        }
+        function addItem() {
+          const itemInput = document.getElementById('buyingItem');
+          const item = itemInput.value.trim();
+          
+          if (!item) {
+              alert("Please enter an item");
+              return;
+          }
+  
+          const transaction = db.transaction(['buyingList'], 'readwrite');
+          const store = transaction.objectStore('buyingList');
+          
+          store.add({
+              item: item,
+              completed: false
+          });
+  
+          itemInput.value = '';
+          loadBuyingList();
+      }
+  
+      function loadBuyingList() {
+          const itemList = document.getElementById('itemList');
+          itemList.innerHTML = '';
+  
+          const transaction = db.transaction(['buyingList'], 'readonly');
+          const store = transaction.objectStore('buyingList');
+          const request = store.openCursor();
+  
+          request.onsuccess = (event) => {
+              const cursor = event.target.result;
+              if (cursor) {
+                  const itemContainer = document.createElement('div');
+                  itemContainer.className = 'list-item';
+                  
+                  // Create checkbox for completion status
+                  const checkbox = document.createElement('input');
+                  checkbox.type = 'checkbox';
+                  checkbox.checked = cursor.value.completed;
+                  checkbox.onchange = () => toggleItem(cursor.value.id);
+                  
+                  // Create item text
+                  const itemText = document.createElement('span');
+                  itemText.textContent = cursor.value.item;
+                  if (cursor.value.completed) {
+                      itemText.classList.add('completed');
+                  }
+                  
+                  // Create delete button
+                  const deleteBtn = document.createElement('button');
+                  deleteBtn.textContent = 'Delete';
+                  deleteBtn.className = 'delete-btn';
+                  deleteBtn.onclick = () => deleteItem(cursor.value.id);
+                  
+                  // Add elements to container
+                  itemContainer.appendChild(checkbox);
+                  itemContainer.appendChild(itemText);
+                  itemContainer.appendChild(deleteBtn);
+                  itemList.appendChild(itemContainer);
+                  
+                  cursor.continue();
+              }
+          };
+      }
+  
+      function toggleItem(id) {
+          const transaction = db.transaction(['buyingList'], 'readwrite');
+          const store = transaction.objectStore('buyingList');
+          const request = store.get(id);
+  
+          request.onsuccess = (event) => {
+              const item = event.target.result;
+              item.completed = !item.completed;
+              store.put(item);
+              loadBuyingList();
+          };
+      }
+  
+      function deleteItem(id) {
+          if (confirm("Are you sure you want to delete this item?")) {
+              const transaction = db.transaction(['buyingList'], 'readwrite');
+              const store = transaction.objectStore('buyingList');
+              store.delete(id);
+              loadBuyingList();
+          }
+      }
+
+        function generateColors(count) {
+            const colors = [];
+            for (let i = 0; i < count; i++) {
+                colors.push(`hsl(${(i * 360) / count}, 70%, 50%)`);
+            }
+            return colors;
+        }
+
+        // Initialize database when page loads
+        window.onload = function() {
+            let request = indexedDB.open('ExpenseTrackerDB', 1);
+
+            request.onerror = function(event) {
+                console.error("Database error: " + event.target.error);
+            };
+
+            request.onupgradeneeded = function(event) {
+                db = event.target.result;
+
+                if (!db.objectStoreNames.contains('expenses')) {
+                    const expenseStore = db.createObjectStore('expenses', { keyPath: 'id', autoIncrement: true });
+                    expenseStore.createIndex('date', 'date', { unique: false });
+                    expenseStore.createIndex('name', 'name', { unique: false });
+                    expenseStore.createIndex('cost', 'cost', { unique: false });
+                }
+
+                if (!db.objectStoreNames.contains('buyingList')) {
+                    const buyingListStore = db.createObjectStore('buyingList', { keyPath: 'id', autoIncrement: true });
+                    buyingListStore.createIndex('item', 'item', { unique: false });
+                    buyingListStore.createIndex('completed', 'completed', { unique: false });
+                }
+            };
+
+            request.onsuccess = function(event) {
+                db = event.target.result;
+                console.log("Database initialized successfully");
+            };
+        };
+    </script>
+</body>
+</html>
