@@ -6,6 +6,21 @@ The Expense Tracker Application is a user-friendly tool designed to streamline p
 ## 🚧 Web Application Development
 I am currently working on a web application version of this Expense Tracker. You can check the `expenseTracker Web version` folder for updates.
 
+## GUI
+
+![Screenshot](images/Screenshot 2025-07-22 221345.png)
+![Screenshot](images/Screenshot 2025-07-22 221409.png)
+![Screenshot](images/Screenshot 2025-07-22 221427.png)
+![Screenshot](images/Screenshot 2025-07-22 221441.png)
+![Screenshot](images/Screenshot 2025-07-22 221456.png)
+![Screenshot](images/Screenshot 2025-07-22 221515.png)
+![Screenshot](images/Screenshot 2025-07-22 221527.png)
+![Screenshot](images/Screenshot 2025-07-22 221539.png)
+![Screenshot](images/Screenshot 2025-07-22 221539.png)
+
+
+
+
 ## 🔑 Key Features
 
 ### Secure Login
