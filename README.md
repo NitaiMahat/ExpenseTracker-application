@@ -10,14 +10,15 @@ I am currently working on a web application version of this Expense Tracker. You
 
 Here are some screenshots of the application's user interface:
 
-![Screenshot](images/Screenshot 2025-07-22 221345.png)
-![Screenshot](images/Screenshot 2025-07-22 221409.png)
-![Screenshot](images/Screenshot 2025-07-22 221427.png)
-![Screenshot](images/Screenshot 2025-07-22 221441.png)
-![Screenshot](images/Screenshot 2025-07-22 221456.png)
-![Screenshot](images/Screenshot 2025-07-22 221515.png)
-![Screenshot](images/Screenshot 2025-07-22 221527.png)
-![Screenshot](images/Screenshot 2025-07-22 221539.png)
+[![Screenshot](images/Screenshot 2025-07-22 221345.png)](images/Screenshot 2025-07-22 221345.png)
+[![Screenshot](images/Screenshot 2025-07-22 221409.png)](images/Screenshot 2025-07-22 221409.png)
+[![Screenshot](images/Screenshot 2025-07-22 221427.png)](images/Screenshot 2025-07-22 221427.png)
+[![Screenshot](images/Screenshot 2025-07-22 221441.png)](images/Screenshot 2025-07-22 221441.png)
+[![Screenshot](images/Screenshot 2025-07-22 221456.png)](images/Screenshot 2025-07-22 221456.png)
+[![Screenshot](images/Screenshot 2025-07-22 221515.png)](images/Screenshot 2025-07-22 221515.png)
+[![Screenshot](images/Screenshot 2025-07-22 221527.png)](images/Screenshot 2025-07-22 221527.png)
+[![Screenshot](images/Screenshot 2025-07-22 221539.png)](images/Screenshot 2025-07-22 221539.png)
+
 
 
 
