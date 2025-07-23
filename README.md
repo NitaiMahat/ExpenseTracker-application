@@ -3,11 +3,7 @@
 ## 📌 Project Overview
 The Expense Tracker Application is a user-friendly tool designed to streamline personal financial management. Beyond simply tracking expenses, it offers an integrated To-Do List for managing tasks related to financial planning.
 
-## 🚧 Web Application Development
-I am currently working on a web application version of this Expense Tracker. You can check the `expenseTracker Web version` folder for updates.
-
 ## GUI
-
 Here are some screenshots of the application's user interface:
 <p float="left">
   <a href="guiImages/Screenshot 2025-07-22 221345.png">
@@ -37,10 +33,8 @@ Here are some screenshots of the application's user interface:
 </p>
 
 
-
-
-
-
+## 🚧 Web Application Development
+I am currently working on a web application version of this Expense Tracker. You can check the `expenseTracker Web version` folder for updates.
 
 
 ## 🔑 Key Features
