@@ -10,10 +10,32 @@ I am currently working on a web application version of this Expense Tracker. You
 
 Here are some screenshots of the application's user interface:
 <p float="left">
-  <a href="images/Screenshot 2025-07-22 221345.png"><img src="guiImages/Screenshot 2025-07-22 221345.png" width="200"/></a>
-  <a href="images/Screenshot 2025-07-22 221409.png"><img src="images/Screenshot 2025-07-22 221409.png" width="200"/></a>
-  <a href="images/Screenshot 2025-07-22 221427.png"><img src="images/Screenshot 2025-07-22 221427.png" width="200"/></a>
+  <a href="guiImage/Screenshot 2025-07-22 221345.png">
+    <img src="guiImage/Screenshot 2025-07-22 221345.png" width="200"/>
+  </a>
+  <a href="guiImage/Screenshot 2025-07-22 221409.png">
+    <img src="guiImage/Screenshot 2025-07-22 221409.png" width="200"/>
+  </a>
+  <a href="guiImage/Screenshot 2025-07-22 221427.png">
+    <img src="guiImage/Screenshot 2025-07-22 221427.png" width="200"/>
+  </a>
+  <a href="guiImage/Screenshot 2025-07-22 221441.png">
+    <img src="guiImage/Screenshot 2025-07-22 221441.png" width="200"/>
+  </a>
+  <a href="guiImage/Screenshot 2025-07-22 221456.png">
+    <img src="guiImage/Screenshot 2025-07-22 221456.png" width="200"/>
+  </a>
+  <a href="guiImage/Screenshot 2025-07-22 221515.png">
+    <img src="guiImage/Screenshot 2025-07-22 221515.png" width="200"/>
+  </a>
+  <a href="guiImage/Screenshot 2025-07-22 221527.png">
+    <img src="guiImage/Screenshot 2025-07-22 221527.png" width="200"/>
+  </a>
+  <a href="guiImage/Screenshot 2025-07-22 221539.png">
+    <img src="guiImage/Screenshot 2025-07-22 221539.png" width="200"/>
+  </a>
 </p>
+
 
 
 
