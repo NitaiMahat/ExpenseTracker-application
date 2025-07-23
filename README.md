@@ -8,6 +8,8 @@ I am currently working on a web application version of this Expense Tracker. You
 
 ## GUI
 
+Here are some screenshots of the application's user interface:
+
 ![Screenshot](images/Screenshot 2025-07-22 221345.png)
 ![Screenshot](images/Screenshot 2025-07-22 221409.png)
 ![Screenshot](images/Screenshot 2025-07-22 221427.png)
@@ -16,7 +18,7 @@ I am currently working on a web application version of this Expense Tracker. You
 ![Screenshot](images/Screenshot 2025-07-22 221515.png)
 ![Screenshot](images/Screenshot 2025-07-22 221527.png)
 ![Screenshot](images/Screenshot 2025-07-22 221539.png)
-![Screenshot](images/Screenshot 2025-07-22 221539.png)
+
 
 
 
